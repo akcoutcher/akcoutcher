@@ -1,6 +1,8 @@
 import React from 'react';
-import { Phone, Mail, MapPin, Clock, MessageCircle, Instagram, Facebook, Youtube } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, MessageCircle, Instagram, Facebook, Youtube, Ruler, Heart } from 'lucide-react';
 import { SiteSettings } from '../../types/database';
+import { PWAInstallButton } from '../common/PWAInstallButton';
+import { useCouture } from '../../context/CoutureContext';
 
 interface FooterProps {
   settings: SiteSettings;
@@ -9,10 +11,13 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ settings, onNavigate }) => {
   const currentYear = new Date().getFullYear();
+  const { setLookbookOpen, setMeasurementModalOpen } = useCouture();
 
   const cleanWhatsapp = settings.whatsapp_number ? settings.whatsapp_number.replace(/[^0-9]/g, '') : '';
   const whatsappUrl = cleanWhatsapp
-    ? `https://wa.me/${cleanWhatsapp}?text=${encodeURIComponent('Hello, I am contacting you from your website regarding bespoke Punjabi suits.')}`
+    ? `https://wa.me/${cleanWhatsapp}?text=${encodeURIComponent(
+        `Hello ${settings.business_name || 'AK Couture'}, I am contacting you from your official website regarding bespoke bridal couture.`
+      )}`
     : '#';
 
   return (
@@ -22,13 +27,13 @@ export const Footer: React.FC<FooterProps> = ({ settings, onNavigate }) => {
           {/* Col 1: Brand & Atelier Story */}
           <div className="space-y-4">
             <h3 className="font-serif text-2xl font-normal text-[#FAF7F2] tracking-wide">
-              {settings.business_name || 'Kaur Couture'}
+              {settings.business_name || 'AK Couture'}
             </h3>
-            <p className="text-xs uppercase tracking-[0.2em] text-[#C5A059] font-medium font-sans">
-              Bespoke Punjabi Atelier
+            <p className="text-xs uppercase tracking-[0.25em] text-[#C5A059] font-medium font-sans">
+              Haute Couture Atelier
             </p>
             <p className="text-sm text-stone-400 font-light leading-relaxed">
-              {settings.tagline || 'Where Tradition Meets Your Style'}. Handcrafting heirloom Punjabi salwar suits, bridal couture, and bespoke zardozi embroidery for discerning women worldwide.
+              {settings.tagline || 'Where Tradition Meets Your Style'}. Handcrafting heirloom Punjabi salwar suits, bridal couture, regal silhouettes, and bespoke zardozi embroidery for discerning clients worldwide.
             </p>
 
             {/* Social Icons */}
@@ -78,40 +83,44 @@ export const Footer: React.FC<FooterProps> = ({ settings, onNavigate }) => {
                 </a>
               )}
             </div>
+
+            <div className="pt-2">
+              <PWAInstallButton variant="footer" />
+            </div>
           </div>
 
           {/* Col 2: Quick Links */}
           <div className="space-y-4">
-            <h4 className="text-xs uppercase tracking-[0.2em] font-medium text-[#C5A059]">Boutique</h4>
+            <h4 className="text-xs uppercase tracking-[0.2em] font-medium text-[#C5A059]">The Atelier</h4>
             <ul className="space-y-2.5 text-sm text-stone-400">
               <li>
-                <button onClick={() => onNavigate('/')} className="hover:text-white transition-colors">
+                <button onClick={() => onNavigate('/')} className="hover:text-white transition-colors cursor-pointer">
                   Home
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('/collections')} className="hover:text-white transition-colors">
-                  Collections
+                <button onClick={() => onNavigate('/collections')} className="hover:text-white transition-colors cursor-pointer">
+                  Haute Collections
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('/designs')} className="hover:text-white transition-colors">
-                  Haute Designs
+                <button onClick={() => onNavigate('/designs')} className="hover:text-white transition-colors cursor-pointer">
+                  Runway Designs
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('/services')} className="hover:text-white transition-colors">
-                  Couture Services
+                <button onClick={() => onNavigate('/services')} className="hover:text-white transition-colors cursor-pointer">
+                  Bespoke Tailoring &amp; Embroidery
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('/gallery')} className="hover:text-white transition-colors">
-                  Artisan Gallery
+                <button onClick={() => onNavigate('/gallery')} className="hover:text-white transition-colors cursor-pointer">
+                  Real Brides &amp; Trousseau
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('/about')} className="hover:text-white transition-colors">
-                  Our Atelier & Designer
+                <button onClick={() => onNavigate('/about')} className="hover:text-white transition-colors cursor-pointer">
+                  Designer Philosophy &amp; Heritage
                 </button>
               </li>
             </ul>
@@ -119,21 +128,34 @@ export const Footer: React.FC<FooterProps> = ({ settings, onNavigate }) => {
 
           {/* Col 3: Appointments & Bespoke */}
           <div className="space-y-4">
-            <h4 className="text-xs uppercase tracking-[0.2em] font-medium text-[#C5A059]">Bespoke Services</h4>
+            <h4 className="text-xs uppercase tracking-[0.2em] font-medium text-[#C5A059]">Client Concierge</h4>
             <ul className="space-y-2.5 text-sm text-stone-400">
               <li>
-                <button onClick={() => onNavigate('/book-appointment')} className="hover:text-white transition-colors text-left">
+                <button onClick={() => onNavigate('/book-appointment')} className="hover:text-white transition-colors text-left cursor-pointer">
                   Book Fitting Consultation
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('/custom-order')} className="hover:text-white transition-colors text-left">
-                  Custom Stitching & Order Request
+                <button onClick={() => onNavigate('/custom-order')} className="hover:text-white transition-colors text-left cursor-pointer">
+                  Custom Couture Commission
                 </button>
               </li>
               <li>
-                <button onClick={() => onNavigate('/contact')} className="hover:text-white transition-colors text-left">
-                  Showroom Directions & Hours
+                <button
+                  onClick={() => setMeasurementModalOpen(true)}
+                  className="hover:text-[#C5A059] transition-colors text-left flex items-center gap-1.5 cursor-pointer"
+                >
+                  <Ruler className="w-3.5 h-3.5 text-[#C5A059]" />
+                  <span>Interactive Measurement Guide</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => setLookbookOpen(true)}
+                  className="hover:text-[#C5A059] transition-colors text-left flex items-center gap-1.5 cursor-pointer"
+                >
+                  <Heart className="w-3.5 h-3.5 text-[#C5A059]" />
+                  <span>My Saved Lookbook</span>
                 </button>
               </li>
               {cleanWhatsapp && (
@@ -145,7 +167,7 @@ export const Footer: React.FC<FooterProps> = ({ settings, onNavigate }) => {
                     className="inline-flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300"
                   >
                     <MessageCircle className="w-3.5 h-3.5" />
-                    <span>WhatsApp Concierge</span>
+                    <span>WhatsApp VIP Concierge</span>
                   </a>
                 </li>
               )}
@@ -154,7 +176,7 @@ export const Footer: React.FC<FooterProps> = ({ settings, onNavigate }) => {
 
           {/* Col 4: Atelier Location & Hours */}
           <div className="space-y-4">
-            <h4 className="text-xs uppercase tracking-[0.2em] font-medium text-[#C5A059]">Atelier Showroom</h4>
+            <h4 className="text-xs uppercase tracking-[0.2em] font-medium text-[#C5A059]">Atelier Flagship</h4>
             <div className="space-y-3 text-sm text-stone-400">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#C5A059] shrink-0 mt-0.5" />
@@ -180,17 +202,17 @@ export const Footer: React.FC<FooterProps> = ({ settings, onNavigate }) => {
           </div>
         </div>
 
-        {/* Hairline Divider & Bottom Bar */}
+        {/* Bottom Bar */}
         <div className="pt-8 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-400 font-light">
-          <p>© {currentYear} {settings.business_name || 'Kaur Couture'}. All rights reserved.</p>
+          <p>© {currentYear} {settings.business_name || 'AK Couture'}. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <button onClick={() => onNavigate('/privacy-policy')} className="hover:text-stone-300">
+            <button onClick={() => onNavigate('/privacy-policy')} className="hover:text-stone-300 cursor-pointer">
               Privacy Policy
             </button>
-            <button onClick={() => onNavigate('/terms')} className="hover:text-stone-300">
-              Terms & Conditions
+            <button onClick={() => onNavigate('/terms')} className="hover:text-stone-300 cursor-pointer">
+              Terms &amp; Conditions
             </button>
-            <a href="#root" className="hover:text-stone-300">
+            <a href="#root" className="hover:text-stone-300 cursor-pointer">
               Back to top ↑
             </a>
           </div>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F3E5AB" />
+      <stop offset="40%" stop-color="#D4AF37" />
+      <stop offset="70%" stop-color="#AA7A1E" />
+      <stop offset="100%" stop-color="#C5A059" />
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2D080E" />
+      <stop offset="50%" stop-color="#190408" />
+      <stop offset="100%" stop-color="#0E0204" />
+    </linearGradient>
+  </defs>
+
+  <!-- Deep Velvet Regal Background -->
+  <rect width="512" height="512" rx="96" fill="url(#bgGrad)" />
+
+  <!-- Ornate Golden Outer Border -->
+  <rect x="24" y="24" width="464" height="464" rx="76" fill="none" stroke="url(#goldGrad)" stroke-width="4" stroke-opacity="0.85" />
+  <rect x="36" y="36" width="440" height="440" rx="66" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" stroke-dasharray="6,4" stroke-opacity="0.6" />
+
+  <!-- Center Atelier Monogram & Golden Scissors/Couture Crown Motif -->
+  <g transform="translate(256, 190) scale(1.15)">
+    <!-- Crown / Tiara Motif -->
+    <path d="M-60,-50 L-30,-20 L0,-65 L30,-20 L60,-50 L45,0 L-45,0 Z" fill="url(#goldGrad)" />
+    <circle cx="-60" cy="-55" r="4.5" fill="#FFF" />
+    <circle cx="0" cy="-70" r="5.5" fill="#FFF" />
+    <circle cx="60" cy="-55" r="4.5" fill="#FFF" />
+
+    <!-- Atelier Needle & Thread / Crossed Scissors Geometry -->
+    <path d="M-55,20 Q0,-10 55,20 Q30,60 0,75 Q-30,60 -55,20 Z" fill="none" stroke="url(#goldGrad)" stroke-width="2.5" />
+  </g>
+
+  <!-- Brand Typography in Gold -->
+  <g text-anchor="middle">
+    <text x="256" y="325" font-family="'Cormorant Garamond', 'Playfair Display', Georgia, serif" font-size="78" font-weight="600" letter-spacing="4" fill="url(#goldGrad)">
+      AK
+    </text>
+    <text x="256" y="375" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="20" font-weight="600" letter-spacing="8" fill="#F3E5AB">
+      COUTURE
+    </text>
+    <text x="256" y="405" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="12" font-weight="500" letter-spacing="4" fill="#C5A059" opacity="0.8">
+      HAUTE ATELIER
+    </text>
+  </g>
+</svg>

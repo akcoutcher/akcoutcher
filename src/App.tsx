@@ -40,6 +40,12 @@ import { AdminMediaPage } from './pages/admin/AdminMediaPage';
 import { AdminSettingsPage } from './pages/admin/AdminSettingsPage';
 import { AdminProfilePage } from './pages/admin/AdminProfilePage';
 
+import { CoutureProvider } from './context/CoutureContext';
+import { PWAInstallBanner } from './components/common/PWAInstallBanner';
+import { OfflineIndicator } from './components/common/OfflineIndicator';
+import { LookbookDrawer } from './components/common/LookbookDrawer';
+import { MeasurementGuideModal } from './components/common/MeasurementGuideModal';
+
 function AppContent() {
   const [currentPath, setCurrentPath] = useState<string>(() => {
     return typeof window !== 'undefined' ? window.location.pathname || '/' : '/';
@@ -263,14 +269,26 @@ function AppContent() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#FAF7F2] text-[#1C1917]">
-      {/* Public Header - Note: No admin links exist in public header */}
+      {/* PWA In-App Install Banner for easy 1-click browser installation */}
+      <PWAInstallBanner />
+
+      {/* Public Header */}
       <Header settings={settings} currentPath={currentPath} onNavigate={navigate} />
 
       {/* Main Public Content */}
       <main className="flex-1">{renderPublicPage()}</main>
 
-      {/* Public Footer - Note: No admin links exist in public footer */}
+      {/* Public Footer */}
       <Footer settings={settings} onNavigate={navigate} />
+
+      {/* Slide-out Lookbook Drawer */}
+      <LookbookDrawer settings={settings} onNavigate={navigate} />
+
+      {/* Global Bespoke Measurement Guide Modal */}
+      <MeasurementGuideModal />
+
+      {/* Offline Status Indicator */}
+      <OfflineIndicator />
     </div>
   );
 }
@@ -278,7 +296,9 @@ function AppContent() {
 export default function App() {
   return (
     <ToastProvider>
-      <AppContent />
+      <CoutureProvider>
+        <AppContent />
+      </CoutureProvider>
     </ToastProvider>
   );
 }

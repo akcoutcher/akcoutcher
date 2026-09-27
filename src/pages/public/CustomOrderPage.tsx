@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { SiteSettings } from '../../types/database';
 import { createCustomOrder, uploadMediaFile } from '../../lib/db';
-import { Scissors, Upload, CheckCircle2, AlertCircle, Sparkles, FileText, Image as ImageIcon } from 'lucide-react';
+import { Scissors, Upload, CheckCircle2, AlertCircle, Sparkles, FileText, Image as ImageIcon, Ruler, Wand2 } from 'lucide-react';
+import { useCouture } from '../../context/CoutureContext';
 
 interface CustomOrderPageProps {
   settings: SiteSettings;
@@ -9,6 +10,8 @@ interface CustomOrderPageProps {
 }
 
 export const CustomOrderPage: React.FC<CustomOrderPageProps> = ({ settings, onNavigate }) => {
+  const { measurements, setMeasurementModalOpen } = useCouture();
+
   const [formData, setFormData] = useState({
     customer_name: '',
     phone: '',
@@ -23,6 +26,15 @@ export const CustomOrderPage: React.FC<CustomOrderPageProps> = ({ settings, onNa
     required_date: '',
     additional_notes: '',
   });
+
+  const handleAutoFillMeasurements = () => {
+    if (measurements.bust || measurements.waist || measurements.hips) {
+      const summary = `Bust: ${measurements.bust || '-'} ${measurements.unit}, Waist: ${measurements.waist || '-'} ${measurements.unit}, Hips: ${measurements.hips || '-'} ${measurements.unit}, Shoulder: ${measurements.shoulder || '-'} ${measurements.unit}, Kameez Length: ${measurements.kurtaLength || '-'} ${measurements.unit}, Bottom Length: ${measurements.bottomLength || '-'} ${measurements.unit}, Height: ${measurements.height || '-'}. Notes: ${measurements.notes || 'None'}`;
+      setFormData((prev) => ({ ...prev, measurements: summary }));
+    } else {
+      setMeasurementModalOpen(true);
+    }
+  };
 
   const [referenceFile, setReferenceFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string>('');
@@ -389,9 +401,29 @@ export const CustomOrderPage: React.FC<CustomOrderPageProps> = ({ settings, onNa
                 </h3>
 
                 <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-stone-700 mb-1">
-                    Custom Measurements (Optional - or leave blank for guided measurement session)
-                  </label>
+                  <div className="flex items-center justify-between mb-1">
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-stone-700">
+                      Custom Measurements (Optional)
+                    </label>
+                    <div className="flex items-center gap-3">
+                      <button
+                        type="button"
+                        onClick={handleAutoFillMeasurements}
+                        className="text-[11px] text-[#58111A] font-semibold flex items-center gap-1 hover:underline cursor-pointer"
+                      >
+                        <Wand2 className="w-3 h-3 text-[#C5A059]" />
+                        <span>Auto-fill from saved profile</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setMeasurementModalOpen(true)}
+                        className="text-[11px] text-stone-500 hover:text-[#58111A] flex items-center gap-1 cursor-pointer"
+                      >
+                        <Ruler className="w-3 h-3 text-[#C5A059]" />
+                        <span>Interactive Guide</span>
+                      </button>
+                    </div>
+                  </div>
                   <textarea
                     rows={3}
                     placeholder="Enter Bust, Waist, Hips, Kurti Length, Salwar Length, Sleeve Length, or mention 'Will provide over WhatsApp / Video call'."

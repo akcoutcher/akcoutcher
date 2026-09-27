@@ -26,13 +26,18 @@ export const AdminSettingsPage: React.FC = () => {
   const [customUrl, setCustomUrl] = useState('');
   const [customKey, setCustomKey] = useState('');
 
+  const [detectedRef, setDetectedRef] = useState<string | null>(null);
+  const [isPublishableToken, setIsPublishableToken] = useState(false);
+
   const { showToast } = useToast();
 
   useEffect(() => {
     getSettings().then(setSettings);
-    const { url, key } = getSupabaseConfig();
-    setCustomUrl(url || '');
-    setCustomKey(key || '');
+    const config = getSupabaseConfig();
+    setCustomUrl(config.url || config.rawUrl || '');
+    setCustomKey(config.key || config.rawKey || '');
+    setDetectedRef(config.detectedRef);
+    setIsPublishableToken(config.isUrlPublishableKey);
     checkConnection();
   }, []);
 
@@ -376,9 +381,20 @@ export const AdminSettingsPage: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-1">
-              VITE_SUPABASE_URL
-            </label>
+            <div className="flex items-center justify-between mb-1">
+              <label className="block text-xs font-semibold text-stone-300 uppercase tracking-wider">
+                VITE_SUPABASE_URL
+              </label>
+              {detectedRef && customUrl !== `https://${detectedRef}.supabase.co` && (
+                <button
+                  type="button"
+                  onClick={() => setCustomUrl(`https://${detectedRef}.supabase.co`)}
+                  className="text-[10px] text-[#C5A059] hover:underline cursor-pointer"
+                >
+                  Auto-fill https://{detectedRef}.supabase.co
+                </button>
+              )}
+            </div>
             <input
               type="text"
               placeholder="https://xyzcompany.supabase.co"
@@ -386,6 +402,22 @@ export const AdminSettingsPage: React.FC = () => {
               onChange={(e) => setCustomUrl(e.target.value)}
               className="w-full px-3 py-2 text-xs bg-stone-950 border border-stone-700 rounded text-white focus:outline-none focus:border-[#C5A059] font-mono"
             />
+            {customUrl.startsWith('sb_publishable_') && (
+              <p className="mt-1.5 text-[11px] text-amber-400">
+                Notice: <code className="font-mono">sb_publishable_...</code> is an API token, not a URL.
+                {detectedRef ? (
+                  <button
+                    type="button"
+                    onClick={() => setCustomUrl(`https://${detectedRef}.supabase.co`)}
+                    className="ml-1 text-white underline hover:text-[#C5A059]"
+                  >
+                    Click to switch to your project URL (https://{detectedRef}.supabase.co)
+                  </button>
+                ) : (
+                  ' Please enter your Supabase project URL (https://your-ref.supabase.co).'
+                )}
+              </p>
+            )}
           </div>
 
           <div>
