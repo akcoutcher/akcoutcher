@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  --color-cream-50: #FDFBF7;
+  --color-cream-100: #FAF7F2;
+  --color-cream-200: #F3ECE1;
+  --color-cream-300: #E6DCCD;
+  
+  --color-wine-900: #3E0B12;
+  --color-wine-800: #58111A;
+  --color-wine-700: #6B1D2F;
+  --color-wine-600: #85223A;
+  
+  --color-rose-100: #FAF0F0;
+  --color-rose-200: #F4E0E2;
+  --color-rose-300: #E7C3C6;
+  --color-rose-400: #DCA2A8;
+  
+  --color-gold-400: #E0C070;
+  --color-gold-500: #C5A059;
+  --color-gold-600: #AB853E;
+  --color-gold-700: #8A6828;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #FAF7F2;
+  color: #1C1917;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-serif);
+}
+
+/* Custom scrollbars for clean luxury feel */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF7F2;
+}
+::-webkit-scrollbar-thumb {
+  background: #D7CEBF;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C5A059;
+}

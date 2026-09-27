@@ -1,0 +1,7 @@
+{
+  "name": "Kaur Couture - Luxury Punjabi Boutique",
+  "description": "High-end bespoke Punjabi suits, bridal couture, custom stitching, and handcrafted embroidery atelier.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
