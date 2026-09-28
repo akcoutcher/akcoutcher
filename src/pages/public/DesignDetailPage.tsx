@@ -68,15 +68,15 @@ export const DesignDetailPage: React.FC<DesignDetailPageProps> = ({
   const priceDisplay = formatPrice(design.price);
   const whatsappUrl = cleanWhatsapp
     ? `https://wa.me/${cleanWhatsapp}?text=${encodeURIComponent(
-        `Hello ${settings.business_name || 'AK Couture'},\n\nI would like to inquire about the bespoke ensemble "${design.name}" (Code: ${design.code || 'Haute'}).\nEstimated Price: ${priceDisplay}\n\nPlease share fitting availability, customized color options, and dispatch timelines.`
+        `Hello ${settings.business_name || 'Ak Coutcher'},\n\nI would like to inquire about the bespoke ensemble "${design.name}" (Code: ${design.code || 'Haute'}).\nEstimated Price: ${priceDisplay}\n\nPlease share fitting availability, customized color options, and dispatch timelines.`
       )}`
     : '#';
 
   const handleShare = () => {
     if (navigator.share) {
       navigator.share({
-        title: `${design.name} | AK Couture`,
-        text: `Check out this bespoke haute couture ensemble by AK Couture.`,
+        title: `${design.name} | ${settings.business_name || 'Ak Coutcher'}`,
+        text: `Check out this bespoke haute couture ensemble by ${settings.business_name || 'Ak Coutcher'}.`,
         url: window.location.href,
       }).catch(() => {});
     } else {

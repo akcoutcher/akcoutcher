@@ -32,27 +32,27 @@ const KEYS = {
 // Initial default settings
 export const DEFAULT_SETTINGS: SiteSettings = {
   id: 'primary',
-  business_name: 'Kaur Couture',
+  business_name: 'Ak Coutcher',
   tagline: 'Where Tradition Meets Your Style',
-  phone: '+91 98765 43210',
-  whatsapp_number: '919876543210',
-  email: 'contact@kaurcouture.com',
-  address: '14 Heritage Boulevard, Model Town, Ludhiana, Punjab 141002',
-  google_maps_url: 'https://maps.google.com',
+  phone: '+91 95016 57426',
+  whatsapp_number: '919501657426',
+  email: 'akcoutcher@gmail.com',
+  address: 'Adampur Doaba, Distt. Jalandhar, Pin Code 144102, Punjab',
+  google_maps_url: 'https://maps.google.com/?q=Adampur+Doaba+Jalandhar+Punjab+144102',
   opening_hours: 'Mon - Sat: 10:30 AM - 8:00 PM | Sun: By Appointment',
-  instagram_url: 'https://instagram.com/kaurcouture',
-  facebook_url: 'https://facebook.com/kaurcouture',
-  youtube_url: 'https://youtube.com/@kaurcouture',
+  instagram_url: 'https://instagram.com/akcoutcher',
+  facebook_url: 'https://www.facebook.com/profile.php?id=61594971117349',
+  youtube_url: 'https://youtube.com/@akcoutcher',
   logo_url: '',
   favicon_url: '',
   owner_image_url: '/src/assets/images/punjabi_designer_portrait_1790501188325.jpg',
-  owner_name: 'Simran Kaur',
+  owner_name: 'Anmol Kaur',
   owner_title: 'Creative Director & Master Couturier',
   owner_short_bio: 'Curating heirloom Punjabi silhouettes, bridal couture, and bespoke zardozi embroidery for women globally.',
-  owner_full_bio: 'With over 18 years dedicated to preserving authentic Punjabi textile heritage, Simran Kaur unites centuries-old tilla, gota patti, and hand-phulkari needlework with modern couture tailoring. Every bespoke suit and bridal ensemble is individually envisioned, patterned, and perfected.',
-  meta_title: 'Kaur Couture | Bespoke Punjabi Suits & Bridal Wear',
-  meta_description: 'Discover luxury Punjabi salwar suits, bridal wear, custom zardozi embroidery, and bespoke tailoring crafted with master artisans.',
-  keywords: 'Punjabi suits, bridal wear, Patiala salwar, custom stitching, zardozi embroidery, boutique',
+  owner_full_bio: 'With dedicated passion for preserving authentic Punjabi textile heritage, Anmol Kaur unites centuries-old tilla, gota patti, and hand-phulkari needlework with modern couture tailoring. Every bespoke suit and bridal ensemble is individually envisioned, patterned, and perfected.',
+  meta_title: 'Ak Coutcher | Bespoke Punjabi Suits & Bridal Wear',
+  meta_description: 'Discover luxury Punjabi salwar suits, bridal wear, custom zardozi embroidery, and bespoke tailoring crafted with master artisans in Adampur Doaba, Jalandhar.',
+  keywords: 'Punjabi suits, bridal wear, Patiala salwar, custom stitching, zardozi embroidery, boutique, Jalandhar, Adampur Doaba',
   og_image_url: '/src/assets/images/punjabi_couture_hero_1790501175200.jpg',
   created_at: new Date().toISOString(),
   updated_at: new Date().toISOString(),
@@ -129,7 +129,41 @@ export async function getSettings(): Promise<SiteSettings> {
       console.warn('Supabase fetch error for settings:', e);
     }
   }
-  return readLocal<SiteSettings>(KEYS.SETTINGS, DEFAULT_SETTINGS);
+  const loaded = readLocal<SiteSettings>(KEYS.SETTINGS, DEFAULT_SETTINGS);
+  let changed = false;
+  if (loaded && (loaded.business_name === 'Kaur Couture' || loaded.business_name === 'AK Couture')) {
+    loaded.business_name = 'Ak Coutcher';
+    changed = true;
+  }
+  if (loaded && (!loaded.facebook_url || loaded.facebook_url.includes('facebook.com/kaurcouture') || loaded.facebook_url.includes('facebook.com/akcoutcher'))) {
+    loaded.facebook_url = 'https://www.facebook.com/profile.php?id=61594971117349';
+    changed = true;
+  }
+  if (loaded && (!loaded.phone || loaded.phone.includes('98765'))) {
+    loaded.phone = '+91 95016 57426';
+    changed = true;
+  }
+  if (loaded && (!loaded.whatsapp_number || loaded.whatsapp_number.includes('9876543210'))) {
+    loaded.whatsapp_number = '919501657426';
+    changed = true;
+  }
+  if (loaded && (!loaded.email || loaded.email.includes('kaurcouture.com') || loaded.email.includes('contact@akcoutcher.com'))) {
+    loaded.email = 'akcoutcher@gmail.com';
+    changed = true;
+  }
+  if (loaded && (!loaded.address || loaded.address.includes('Ludhiana') || loaded.address.includes('Heritage Boulevard'))) {
+    loaded.address = 'Adampur Doaba, Distt. Jalandhar, Pin Code 144102, Punjab';
+    loaded.google_maps_url = 'https://maps.google.com/?q=Adampur+Doaba+Jalandhar+Punjab+144102';
+    changed = true;
+  }
+  if (loaded && (!loaded.owner_name || loaded.owner_name === 'Simran Kaur')) {
+    loaded.owner_name = 'Anmol Kaur';
+    changed = true;
+  }
+  if (changed && loaded) {
+    writeLocal(KEYS.SETTINGS, loaded);
+  }
+  return loaded;
 }
 
 export async function updateSettings(settings: Partial<SiteSettings>): Promise<SiteSettings> {

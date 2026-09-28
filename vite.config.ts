@@ -14,8 +14,8 @@ export default defineConfig(() => {
         includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'icon.svg'],
         manifest: {
           id: '/',
-          name: 'Kaur Couture - Luxury Punjabi Boutique',
-          short_name: 'Kaur Couture',
+          name: 'Ak Coutcher - Luxury Punjabi Boutique',
+          short_name: 'Ak Coutcher',
           description: 'High-end bespoke Punjabi suits, bridal couture, custom stitching, and handcrafted embroidery atelier.',
           theme_color: '#58111A',
           background_color: '#190408',

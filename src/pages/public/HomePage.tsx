@@ -575,7 +575,7 @@ export const HomePage: React.FC<HomePageProps> = ({ settings, homepage, onNaviga
                 <img src="/pwa-192x192.png" alt="App" className="w-10 h-10 object-contain" />
               </div>
               <div>
-                <h3 className="font-serif text-2xl text-white font-medium">Install AK Couture on Your Device</h3>
+                <h3 className="font-serif text-2xl text-white font-medium">Install Ak Coutcher on Your Device</h3>
                 <p className="text-xs text-stone-300 mt-1 max-w-lg">
                   Install in seconds without going to app stores. Enjoy instant offline browsing of our bridal lookbooks and quick appointment booking.
                 </p>

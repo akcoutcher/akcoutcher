@@ -19,7 +19,7 @@ export const LookbookDrawer: React.FC<LookbookDrawerProps> = ({ settings, onNavi
   const itemNames = wishlist.map((item) => `${item.name} (Code: ${item.code || 'Bespoke'})`).join('\n• ');
   const whatsappLookbookUrl = cleanWhatsapp
     ? `https://wa.me/${cleanWhatsapp}?text=${encodeURIComponent(
-        `Hello ${settings.business_name || 'AK Couture'},\n\nI have saved these outfits in my personal Lookbook and would like to inquire about bespoke fittings, custom colorways, and availability:\n\n• ${itemNames}\n\nPlease share details and consultation slots.`
+        `Hello ${settings.business_name || 'Ak Coutcher'},\n\nI have saved these outfits in my personal Lookbook and would like to inquire about bespoke fittings, custom colorways, and availability:\n\n• ${itemNames}\n\nPlease share details and consultation slots.`
       )}`
     : '#';
 

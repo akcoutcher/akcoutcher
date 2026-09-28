@@ -41,10 +41,10 @@ import { AdminSettingsPage } from './pages/admin/AdminSettingsPage';
 import { AdminProfilePage } from './pages/admin/AdminProfilePage';
 
 import { CoutureProvider } from './context/CoutureContext';
-import { PWAInstallBanner } from './components/common/PWAInstallBanner';
 import { OfflineIndicator } from './components/common/OfflineIndicator';
 import { LookbookDrawer } from './components/common/LookbookDrawer';
 import { MeasurementGuideModal } from './components/common/MeasurementGuideModal';
+import { FloatingWhatsAppButton } from './components/common/FloatingWhatsAppButton';
 
 function AppContent() {
   const [currentPath, setCurrentPath] = useState<string>(() => {
@@ -269,9 +269,6 @@ function AppContent() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#FAF7F2] text-[#1C1917]">
-      {/* PWA In-App Install Banner for easy 1-click browser installation */}
-      <PWAInstallBanner />
-
       {/* Public Header */}
       <Header settings={settings} currentPath={currentPath} onNavigate={navigate} />
 
@@ -286,6 +283,9 @@ function AppContent() {
 
       {/* Global Bespoke Measurement Guide Modal */}
       <MeasurementGuideModal />
+
+      {/* Floating WhatsApp Button to chat with ANMOL KAUR */}
+      {settings && <FloatingWhatsAppButton settings={settings} />}
 
       {/* Offline Status Indicator */}
       <OfflineIndicator />

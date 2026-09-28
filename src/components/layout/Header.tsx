@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Menu, X, Calendar, MessageCircle, Heart, Ruler, Globe } from 'lucide-react';
 import { SiteSettings } from '../../types/database';
 import { useCouture, CURRENCIES, CurrencyCode } from '../../context/CoutureContext';
-import { PWAInstallButton } from '../common/PWAInstallButton';
 
 interface HeaderProps {
   settings: SiteSettings;
@@ -48,7 +47,7 @@ export const Header: React.FC<HeaderProps> = ({ settings, currentPath, onNavigat
               Haute Couture Atelier
             </span>
             <span className="text-stone-400 truncate">
-              {settings.address ? settings.address.split(',')[0] : 'Model Town'} • Bespoke Global Delivery
+              {settings.address ? settings.address.split(',')[0] : 'Adampur Doaba'} • Bespoke Global Delivery
             </span>
           </div>
 
@@ -115,7 +114,7 @@ export const Header: React.FC<HeaderProps> = ({ settings, currentPath, onNavigat
             ) : (
               <div className="flex flex-col">
                 <span className="font-serif text-2xl sm:text-3xl font-medium tracking-tight text-[#58111A] group-hover:text-[#6B1D2F] transition-colors">
-                  {settings.business_name || 'AK Couture'}
+                  {settings.business_name === 'Kaur Couture' || !settings.business_name ? 'Ak Coutcher' : settings.business_name}
                 </span>
                 <span className="text-[10px] tracking-[0.25em] uppercase text-[#C5A059] font-semibold font-sans -mt-1">
                   Haute Couture Atelier
@@ -146,11 +145,8 @@ export const Header: React.FC<HeaderProps> = ({ settings, currentPath, onNavigat
           })}
         </nav>
 
-        {/* Right Touchpoints: PWA Install, Lookbook, WhatsApp, Book Appointment */}
+        {/* Right Touchpoints: Lookbook, WhatsApp, Book Appointment */}
         <div className="hidden sm:flex items-center gap-3">
-          {/* PWA In-App Install Button */}
-          <PWAInstallButton variant="nav" />
-
           {/* Lookbook Drawer trigger */}
           <button
             onClick={() => setLookbookOpen(true)}
@@ -201,8 +197,6 @@ export const Header: React.FC<HeaderProps> = ({ settings, currentPath, onNavigat
               </span>
             )}
           </button>
-
-          <PWAInstallButton variant="nav" className="text-[10px] px-2 py-1" />
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

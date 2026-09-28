@@ -14,9 +14,10 @@ export const Footer: React.FC<FooterProps> = ({ settings, onNavigate }) => {
   const { setLookbookOpen, setMeasurementModalOpen } = useCouture();
 
   const cleanWhatsapp = settings.whatsapp_number ? settings.whatsapp_number.replace(/[^0-9]/g, '') : '';
+  const businessDisplayName = settings.business_name || 'Ak Coutcher';
   const whatsappUrl = cleanWhatsapp
     ? `https://wa.me/${cleanWhatsapp}?text=${encodeURIComponent(
-        `Hello ${settings.business_name || 'AK Couture'}, I am contacting you from your official website regarding bespoke bridal couture.`
+        `Hello ${businessDisplayName}, I am contacting you from your official website regarding bespoke bridal couture.`
       )}`
     : '#';
 
@@ -27,7 +28,7 @@ export const Footer: React.FC<FooterProps> = ({ settings, onNavigate }) => {
           {/* Col 1: Brand & Atelier Story */}
           <div className="space-y-4">
             <h3 className="font-serif text-2xl font-normal text-[#FAF7F2] tracking-wide">
-              {settings.business_name || 'AK Couture'}
+              {businessDisplayName}
             </h3>
             <p className="text-xs uppercase tracking-[0.25em] text-[#C5A059] font-medium font-sans">
               Haute Couture Atelier
@@ -180,18 +181,18 @@ export const Footer: React.FC<FooterProps> = ({ settings, onNavigate }) => {
             <div className="space-y-3 text-sm text-stone-400">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-[#C5A059] shrink-0 mt-0.5" />
-                <span>{settings.address || 'Model Town, Ludhiana, Punjab'}</span>
+                <span>{settings.address || 'Adampur Doaba, Distt. Jalandhar, Pin Code 144102, Punjab'}</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#C5A059] shrink-0" />
-                <a href={`tel:${settings.phone}`} className="hover:text-white">
-                  {settings.phone || '+91 98765 43210'}
+                <a href={`tel:${settings.phone || '+919501657426'}`} className="hover:text-white">
+                  {settings.phone || '+91 95016 57426'}
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#C5A059] shrink-0" />
-                <a href={`mailto:${settings.email}`} className="hover:text-white">
-                  {settings.email || 'contact@kaurcouture.com'}
+                <a href={`mailto:${settings.email || 'akcoutcher@gmail.com'}`} className="hover:text-white">
+                  {settings.email || 'akcoutcher@gmail.com'}
                 </a>
               </div>
               <div className="flex items-start gap-2.5">
@@ -204,7 +205,7 @@ export const Footer: React.FC<FooterProps> = ({ settings, onNavigate }) => {
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-stone-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-400 font-light">
-          <p>© {currentYear} {settings.business_name || 'AK Couture'}. All rights reserved.</p>
+          <p>© {currentYear} {businessDisplayName}. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <button onClick={() => onNavigate('/privacy-policy')} className="hover:text-stone-300 cursor-pointer">
               Privacy Policy

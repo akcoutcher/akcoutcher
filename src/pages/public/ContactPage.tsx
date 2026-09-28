@@ -21,7 +21,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings, onNavigate }
 
   const cleanWhatsapp = settings.whatsapp_number ? settings.whatsapp_number.replace(/[^0-9]/g, '') : '';
   const whatsappUrl = cleanWhatsapp
-    ? `https://wa.me/${cleanWhatsapp}?text=${encodeURIComponent('Hello Kaur Couture, I would like to get in touch regarding bespoke suits and services.')}`
+    ? `https://wa.me/${cleanWhatsapp}?text=${encodeURIComponent(`Hello ${settings.business_name || 'Ak Coutcher'}, I would like to get in touch regarding bespoke suits and services.`)}`
     : '#';
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -83,7 +83,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings, onNavigate }
                 <MapPin className="w-5 h-5 text-[#C5A059] shrink-0 mt-0.5" />
                 <div>
                   <span className="font-medium text-stone-900 block text-xs uppercase tracking-wider mb-1">Address</span>
-                  <p className="leading-relaxed">{settings.address || '14 Heritage Boulevard, Model Town, Ludhiana, Punjab'}</p>
+                  <p className="leading-relaxed">{settings.address || 'Adampur Doaba, Distt. Jalandhar, Pin Code 144102, Punjab'}</p>
                   {settings.google_maps_url && (
                     <a
                       href={settings.google_maps_url}
@@ -109,8 +109,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings, onNavigate }
                 <Phone className="w-5 h-5 text-[#C5A059] shrink-0 mt-0.5" />
                 <div>
                   <span className="font-medium text-stone-900 block text-xs uppercase tracking-wider mb-1">Direct Call</span>
-                  <a href={`tel:${settings.phone}`} className="hover:text-[#58111A] font-medium">
-                    {settings.phone || '+91 98765 43210'}
+                  <a href={`tel:${settings.phone || '+919501657426'}`} className="hover:text-[#58111A] font-medium">
+                    {settings.phone || '+91 95016 57426'}
                   </a>
                 </div>
               </div>
@@ -119,8 +119,8 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings, onNavigate }
                 <Mail className="w-5 h-5 text-[#C5A059] shrink-0 mt-0.5" />
                 <div>
                   <span className="font-medium text-stone-900 block text-xs uppercase tracking-wider mb-1">Email</span>
-                  <a href={`mailto:${settings.email}`} className="hover:text-[#58111A]">
-                    {settings.email || 'contact@kaurcouture.com'}
+                  <a href={`mailto:${settings.email || 'akcoutcher@gmail.com'}`} className="hover:text-[#58111A]">
+                    {settings.email || 'akcoutcher@gmail.com'}
                   </a>
                 </div>
               </div>

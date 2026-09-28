@@ -100,7 +100,7 @@ export const BookAppointmentPage: React.FC<BookAppointmentPageProps> = ({ settin
   const cleanWhatsapp = settings.whatsapp_number ? settings.whatsapp_number.replace(/[^0-9]/g, '') : '';
   const whatsappUrl = cleanWhatsapp
     ? `https://wa.me/${cleanWhatsapp}?text=${encodeURIComponent(
-        `Hello ${settings.business_name || 'AK Couture'}, I have submitted an appointment request for a ${formData.service} on ${formData.preferred_date || 'my preferred date'}.`
+        `Hello ${settings.business_name || 'Ak Coutcher'}, I have submitted an appointment request for a ${formData.service} on ${formData.preferred_date || 'my preferred date'}.`
       )}`
     : '#';
 
