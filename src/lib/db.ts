@@ -32,8 +32,8 @@ const KEYS = {
 // Initial default settings
 export const DEFAULT_SETTINGS: SiteSettings = {
   id: 'primary',
-  business_name: 'Ak Coutcher',
-  tagline: 'Where Tradition Meets Your Style',
+  business_name: 'AK COUTURE',
+  tagline: 'TURN YOUR PASSION INTO A PROFESSION',
   phone: '+91 95016 57426',
   whatsapp_number: '919501657426',
   email: 'akcoutcher@gmail.com',
@@ -45,15 +45,15 @@ export const DEFAULT_SETTINGS: SiteSettings = {
   youtube_url: 'https://youtube.com/@akcoutcher',
   logo_url: '',
   favicon_url: '',
-  owner_image_url: '/src/assets/images/punjabi_designer_portrait_1790501188325.jpg',
+  owner_image_url: '/aakk11.png',
   owner_name: 'Anmol Kaur',
   owner_title: 'Creative Director & Master Couturier',
   owner_short_bio: 'Curating heirloom Punjabi silhouettes, bridal couture, and bespoke zardozi embroidery for women globally.',
   owner_full_bio: 'With dedicated passion for preserving authentic Punjabi textile heritage, Anmol Kaur unites centuries-old tilla, gota patti, and hand-phulkari needlework with modern couture tailoring. Every bespoke suit and bridal ensemble is individually envisioned, patterned, and perfected.',
-  meta_title: 'Ak Coutcher | Bespoke Punjabi Suits & Bridal Wear',
-  meta_description: 'Discover luxury Punjabi salwar suits, bridal wear, custom zardozi embroidery, and bespoke tailoring crafted with master artisans in Adampur Doaba, Jalandhar.',
-  keywords: 'Punjabi suits, bridal wear, Patiala salwar, custom stitching, zardozi embroidery, boutique, Jalandhar, Adampur Doaba',
-  og_image_url: '/src/assets/images/punjabi_couture_hero_1790501175200.jpg',
+  meta_title: 'AK COUTURE | Fashion Designing & Skill Development',
+  meta_description: 'AK COUTURE offers professional fashion designing courses, fashion illustration, pattern making, garment construction, sewing, styling and fashion business training.',
+  keywords: 'AK COUTURE, fashion designing, pattern making, Punjabi suits, bridal wear, Patiala salwar, custom stitching, zardozi embroidery, boutique, Jalandhar, Adampur Doaba',
+  og_image_url: '/src/assets/images/hero_ak_couture_1790594513046.jpg',
   created_at: new Date().toISOString(),
   updated_at: new Date().toISOString(),
 };
@@ -62,14 +62,14 @@ export const DEFAULT_HOMEPAGE: HomepageContent = {
   id: 'primary',
   hero_heading: 'Where Tradition Meets Your Style',
   hero_subtitle: 'Bespoke Punjabi bridal couture, regal silhouettes, and handcrafted heritage embroidery tailored to your exact measurements.',
-  hero_image_url: '/src/assets/images/punjabi_couture_hero_1790501175200.jpg',
+  hero_image_url: '/src/assets/images/hero_ak_couture_1790594513046.jpg',
   hero_primary_btn_text: 'Explore Collections',
   hero_primary_btn_link: '/collections',
   hero_secondary_btn_text: 'Book Appointment',
   hero_secondary_btn_link: '/book-appointment',
   about_section_heading: 'A Legacy of Punjabi Grace & Artisanship',
   about_section_subheading: 'THE ATELIER STORY',
-  about_section_text: 'At Kaur Couture, every garment is a celebration of Punjab’s rich sartorial soul. From handspun raw silks to antique gold tilla threadwork, we curate bespoke ensembles that transcend seasonal trends.',
+  about_section_text: 'At Ak Couture, every garment is a celebration of Punjab’s rich sartorial soul. From handspun raw silks to antique gold tilla threadwork, we curate bespoke ensembles that transcend seasonal trends.',
   craftsmanship_heading: 'Master Hand-Embroidery & Bespoke Tailoring',
   craftsmanship_text: 'Each motif is painstakingly rendered by generational karigars. We offer custom fitting sessions, bespoke fabric selection, and personalized design consultations.',
   craftsmanship_image_url: '/src/assets/images/punjabi_embroidery_craft_1790501202133.jpg',
@@ -85,7 +85,7 @@ export const DEFAULT_ABOUT: AboutContent = {
   id: 'primary',
   heading: 'Heirloom Craftsmanship Reimagined',
   subheading: 'ABOUT OUR ATELIER',
-  story: 'Founded in the heart of Punjab, Kaur Couture emerged from a passionate devotion to authentic textile arts and flawless silhouette architecture. We believe every woman deserves clothing that honors tradition while celebrating her personal poise.',
+  story: 'Founded in the heart of Punjab, Ak Couture emerged from a passionate devotion to authentic textile arts and flawless silhouette architecture. We believe every woman deserves clothing that honors tradition while celebrating her personal poise.',
   vision: 'To establish authentic Punjabi couture on global runways while preserving traditional handcraft techniques for future generations.',
   mission: 'To deliver peerless tailored fit, ethically commissioned artisan needlework, and an intimate couture experience for every bride and patron.',
   experience_years: '18+',
@@ -131,8 +131,8 @@ export async function getSettings(): Promise<SiteSettings> {
   }
   const loaded = readLocal<SiteSettings>(KEYS.SETTINGS, DEFAULT_SETTINGS);
   let changed = false;
-  if (loaded && (loaded.business_name === 'Kaur Couture' || loaded.business_name === 'AK Couture')) {
-    loaded.business_name = 'Ak Coutcher';
+  if (loaded && (loaded.business_name === 'Kaur Couture' || loaded.business_name === 'Ak Coutcher' || loaded.business_name === 'AK Coutcher' || loaded.business_name === 'Ak Couture' || !loaded.business_name)) {
+    loaded.business_name = 'AK COUTURE';
     changed = true;
   }
   if (loaded && (!loaded.facebook_url || loaded.facebook_url.includes('facebook.com/kaurcouture') || loaded.facebook_url.includes('facebook.com/akcoutcher'))) {
@@ -202,7 +202,12 @@ export async function getHomepageContent(): Promise<HomepageContent> {
       console.warn('Supabase fetch error for homepage:', e);
     }
   }
-  return readLocal<HomepageContent>(KEYS.HOMEPAGE, DEFAULT_HOMEPAGE);
+  const loaded = readLocal<HomepageContent>(KEYS.HOMEPAGE, DEFAULT_HOMEPAGE);
+  if (loaded && (!loaded.hero_image_url || loaded.hero_image_url.includes('punjabi_couture_hero'))) {
+    loaded.hero_image_url = '/src/assets/images/hero_ak_couture_1790594513046.jpg';
+    writeLocal(KEYS.HOMEPAGE, loaded);
+  }
+  return loaded;
 }
 
 export async function updateHomepageContent(content: Partial<HomepageContent>): Promise<HomepageContent> {
@@ -887,7 +892,7 @@ export async function getMediaList(): Promise<MediaItem[]> {
     {
       id: 'media-hero',
       name: 'Punjabi Couture Royal Courtyard',
-      url: '/src/assets/images/punjabi_couture_hero_1790501175200.jpg',
+      url: '/src/assets/images/hero_ak_couture_1790594513046.jpg',
       storage_path: 'hero/couture_hero.jpg',
       mime_type: 'image/jpeg',
       size_bytes: 420000,
@@ -897,12 +902,12 @@ export async function getMediaList(): Promise<MediaItem[]> {
     },
     {
       id: 'media-owner',
-      name: 'Simran Kaur Designer Portrait',
-      url: '/src/assets/images/punjabi_designer_portrait_1790501188325.jpg',
+      name: 'Anmol Kaur Designer Portrait',
+      url: '/src/assets/images/portrait_ak_girl_1790594537826.jpg',
       storage_path: 'owner/simran_kaur.jpg',
       mime_type: 'image/jpeg',
       size_bytes: 350000,
-      alt_text: 'Simran Kaur, Creative Director & Master Couturier',
+      alt_text: 'Anmol Kaur, Creative Director & Master Couturier',
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     },
@@ -920,7 +925,7 @@ export async function getMediaList(): Promise<MediaItem[]> {
     {
       id: 'media-bridal',
       name: 'Bridal Salwar Suit Atelier',
-      url: '/src/assets/images/punjabi_bridal_suit_1790501214454.jpg',
+      url: '/src/assets/images/bridal_ak_girl_1790594555283.jpg',
       storage_path: 'designs/bridal_suit.jpg',
       mime_type: 'image/jpeg',
       size_bytes: 390000,

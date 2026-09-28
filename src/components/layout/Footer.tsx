@@ -14,7 +14,7 @@ export const Footer: React.FC<FooterProps> = ({ settings, onNavigate }) => {
   const { setLookbookOpen, setMeasurementModalOpen } = useCouture();
 
   const cleanWhatsapp = settings.whatsapp_number ? settings.whatsapp_number.replace(/[^0-9]/g, '') : '';
-  const businessDisplayName = settings.business_name || 'Ak Coutcher';
+  const businessDisplayName = settings.business_name || 'AK COUTURE';
   const whatsappUrl = cleanWhatsapp
     ? `https://wa.me/${cleanWhatsapp}?text=${encodeURIComponent(
         `Hello ${businessDisplayName}, I am contacting you from your official website regarding bespoke bridal couture.`
@@ -122,6 +122,16 @@ export const Footer: React.FC<FooterProps> = ({ settings, onNavigate }) => {
               <li>
                 <button onClick={() => onNavigate('/about')} className="hover:text-white transition-colors cursor-pointer">
                   Designer Philosophy &amp; Heritage
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('/courses')} className="hover:text-[#C5A059] transition-colors cursor-pointer font-medium">
+                  Fashion Training &amp; Courses
+                </button>
+              </li>
+              <li>
+                <button onClick={() => onNavigate('/verify')} className="hover:text-[#C5A059] transition-colors cursor-pointer">
+                  Verify Student Certificate
                 </button>
               </li>
             </ul>

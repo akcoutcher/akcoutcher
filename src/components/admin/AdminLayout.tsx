@@ -16,7 +16,8 @@ import {
   ExternalLink,
   ChevronDown,
   Globe,
-  Database
+  Database,
+  GraduationCap
 } from 'lucide-react';
 import { AdminUser, logoutAdmin } from '../../lib/db';
 import { getSupabaseConfig } from '../../lib/supabase';
@@ -76,6 +77,12 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
       ],
     },
     {
+      title: 'Academy & Training',
+      items: [
+        { id: 'courses', label: 'Training & Courses', icon: <GraduationCap className="w-4 h-4" /> },
+      ],
+    },
+    {
       title: 'Assets & Config',
       items: [
         { id: 'media', label: 'Media Library', icon: <ImageIcon className="w-4 h-4" /> },
@@ -98,7 +105,7 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
           </button>
           <div className="flex items-center gap-2">
             <span className="font-serif text-xl font-medium tracking-tight text-[#FAF7F2]">
-              Kaur Couture
+              AK COUTURE
             </span>
             <span className="text-[10px] uppercase font-mono tracking-widest px-2 py-0.5 rounded bg-[#58111A] text-[#C5A059] font-semibold">
               Atelier CMS

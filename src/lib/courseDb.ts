@@ -52,7 +52,12 @@ function writeStorage<T>(key: string, data: T): void {
 // ACADEMY SETTINGS
 // ----------------------------------------------------------------------
 export function getAcademySettings(): AcademySettings {
-  return readStorage<AcademySettings>(STORAGE_KEYS.ACADEMY_SETTINGS, DEFAULT_ACADEMY_SETTINGS);
+  const loaded = readStorage<AcademySettings>(STORAGE_KEYS.ACADEMY_SETTINGS, DEFAULT_ACADEMY_SETTINGS);
+  if (loaded && (loaded.instituteName?.includes('AK COUTCHER') || loaded.instituteName?.includes('Coutcher'))) {
+    loaded.instituteName = 'AK COUTURE Fashion Academy';
+    writeStorage(STORAGE_KEYS.ACADEMY_SETTINGS, loaded);
+  }
+  return loaded;
 }
 
 export function updateAcademySettings(settings: Partial<AcademySettings>): AcademySettings {
@@ -144,12 +149,12 @@ export function saveCourse(courseData: Partial<Course> & { id?: string; title: s
     discountPrice: courseData.discountPrice,
     duration: courseData.duration || '4 Weeks',
     totalLessons: courseData.totalLessons || 10,
-    image: courseData.image || '/src/assets/images/punjabi_couture_hero_1790501175200.jpg',
+    image: courseData.image || '/src/assets/images/hero_ak_couture_1790594513046.jpg',
     instructor: courseData.instructor || {
       name: 'Anmol Kaur',
       role: 'Creative Director & Master Couturier',
-      avatar: '/src/assets/images/punjabi_designer_portrait_1790501188325.jpg',
-      bio: 'Master Couturier at AK Coutcher Atelier.',
+      avatar: '/aakk11.png',
+      bio: 'Master Couturier at AK COUTURE Atelier.',
     },
     mode: courseData.mode || 'Online Video & Practical',
     requirements: courseData.requirements || ['Passion for fashion'],
@@ -201,7 +206,7 @@ export function getCourseModules(courseId: string): CourseModule[] {
           duration: '15 mins',
           order: 1,
           isPreview: true,
-          content: 'Welcome to this masterclass by Anmol Kaur at AK Coutcher. Follow through every lesson methodically.',
+          content: 'Welcome to this masterclass by Anmol Kaur at AK COUTURE. Follow through every lesson methodically.',
         },
         {
           id: `les-${courseId}-2`,

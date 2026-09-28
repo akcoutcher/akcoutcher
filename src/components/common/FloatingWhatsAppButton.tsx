@@ -11,7 +11,7 @@ export const FloatingWhatsAppButton: React.FC<FloatingWhatsAppButtonProps> = ({ 
 
   const cleanWhatsapp = settings.whatsapp_number ? settings.whatsapp_number.replace(/[^0-9]/g, '') : '919501657426';
   const consultantName = 'ANMOL KAUR';
-  const brandName = settings.business_name || 'Ak Coutcher';
+  const brandName = settings.business_name || 'AK COUTURE';
 
   const defaultMessage = `Hello ${consultantName} (${brandName}), I would like to inquire about bespoke Punjabi suits, bridal couture, and custom styling consultations.`;
   const whatsappUrl = `https://wa.me/${cleanWhatsapp}?text=${encodeURIComponent(defaultMessage)}`;

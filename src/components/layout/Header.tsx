@@ -20,6 +20,7 @@ export const Header: React.FC<HeaderProps> = ({ settings, currentPath, onNavigat
     { label: 'Collections', path: '/collections' },
     { label: 'Designs', path: '/designs' },
     { label: 'Services', path: '/services' },
+    { label: 'Courses', path: '/courses' },
     { label: 'Gallery', path: '/gallery' },
     { label: 'About', path: '/about' },
     { label: 'Contact', path: '/contact' },
@@ -114,7 +115,7 @@ export const Header: React.FC<HeaderProps> = ({ settings, currentPath, onNavigat
             ) : (
               <div className="flex flex-col">
                 <span className="font-serif text-2xl sm:text-3xl font-medium tracking-tight text-[#58111A] group-hover:text-[#6B1D2F] transition-colors">
-                  {settings.business_name === 'Kaur Couture' || !settings.business_name ? 'Ak Coutcher' : settings.business_name}
+                  {settings.business_name === 'Kaur Couture' || settings.business_name === 'Ak Coutcher' || !settings.business_name ? 'AK COUTURE' : settings.business_name}
                 </span>
                 <span className="text-[10px] tracking-[0.25em] uppercase text-[#C5A059] font-semibold font-sans -mt-1">
                   Haute Couture Atelier

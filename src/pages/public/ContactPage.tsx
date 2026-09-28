@@ -21,7 +21,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ settings, onNavigate }
 
   const cleanWhatsapp = settings.whatsapp_number ? settings.whatsapp_number.replace(/[^0-9]/g, '') : '';
   const whatsappUrl = cleanWhatsapp
-    ? `https://wa.me/${cleanWhatsapp}?text=${encodeURIComponent(`Hello ${settings.business_name || 'Ak Coutcher'}, I would like to get in touch regarding bespoke suits and services.`)}`
+    ? `https://wa.me/${cleanWhatsapp}?text=${encodeURIComponent(`Hello ${settings.business_name || 'AK COUTURE'}, I would like to get in touch regarding bespoke suits and services.`)}`
     : '#';
 
   const handleSubmit = async (e: React.FormEvent) => {

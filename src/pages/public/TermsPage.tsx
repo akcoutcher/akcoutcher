@@ -20,7 +20,7 @@ export const TermsPage: React.FC<TermsPageProps> = ({ settings, onNavigate }) =>
           <section className="space-y-2">
             <h2 className="font-serif text-xl font-medium text-stone-900">1. Bespoke Orders & Production</h2>
             <p>
-              Each couture piece commissioned through {settings.business_name || 'Kaur Couture'} is handcrafted to individualized specifications and measurements. Production commences only after design approval, fabric selection, and receipt of agreed deposit.
+              Each couture piece commissioned through {settings.business_name || 'AK COUTURE'} is handcrafted to individualized specifications and measurements. Production commences only after design approval, fabric selection, and receipt of agreed deposit.
             </p>
           </section>
 

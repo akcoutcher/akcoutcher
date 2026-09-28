@@ -138,7 +138,7 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({ onNavigate }) => {
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-[#C5A059]/40 text-[#C5A059] text-xs uppercase tracking-widest font-semibold">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>AK COUTCHER • Skill Development Academy</span>
+              <span>AK COUTURE • Fashion Designing &amp; Skill Development</span>
             </div>
 
             <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-light tracking-tight leading-tight text-balance">
@@ -147,7 +147,7 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({ onNavigate }) => {
             </h1>
 
             <p className="text-stone-300 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
-              Learn Fashion Designing from Basics to Advanced Level with AK COUTCHER. Master haute couture drafting, fashion illustration, precision pattern making, and boutique business strategies directly from master couturiers.
+              Learn Fashion Designing from Basics to Advanced Level with AK COUTURE. Master haute couture drafting, fashion illustration, precision pattern making, and boutique business strategies directly from master couturiers.
             </p>
 
             {/* Hero Quick Highlights */}
@@ -202,9 +202,10 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({ onNavigate }) => {
           <div className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-md rounded-2xl overflow-hidden shadow-2xl border-2 border-[#C5A059]/40 bg-stone-950">
               <img
-                src="/src/assets/images/punjabi_designer_portrait_1790501188325.jpg"
-                alt="AK Coutcher Training Academy"
+                src="/aakk11.png"
+                alt="AK COUTURE Fashion Academy"
                 className="w-full h-80 sm:h-96 object-cover object-top"
+                referrerPolicy="no-referrer"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
               <div className="absolute bottom-0 inset-x-0 p-6 space-y-2 text-white">
@@ -595,7 +596,7 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({ onNavigate }) => {
               Have an Issued Certificate?
             </h3>
             <p className="text-xs sm:text-sm text-stone-300 font-light leading-relaxed">
-              Employers and clients can verify the authenticity of any AK COUTCHER Certificate of Course Completion online in real-time.
+              Employers and clients can verify the authenticity of any AK COUTURE Certificate of Course Completion online in real-time.
             </p>
           </div>
 

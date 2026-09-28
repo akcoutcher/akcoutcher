@@ -57,7 +57,7 @@ export const RunwayModal: React.FC<RunwayModalProps> = ({
             /* Atmospheric cinematic runway visualizer */
             <div className="relative w-full h-full flex flex-col items-center justify-center">
               <img
-                src="/src/assets/images/punjabi_couture_hero_1790501175200.jpg"
+                src="/src/assets/images/hero_ak_couture_1790594513046.jpg"
                 alt="Runway"
                 className="absolute inset-0 w-full h-full object-cover filter brightness-50 contrast-125"
               />

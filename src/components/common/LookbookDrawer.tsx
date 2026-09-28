@@ -19,7 +19,7 @@ export const LookbookDrawer: React.FC<LookbookDrawerProps> = ({ settings, onNavi
   const itemNames = wishlist.map((item) => `${item.name} (Code: ${item.code || 'Bespoke'})`).join('\n• ');
   const whatsappLookbookUrl = cleanWhatsapp
     ? `https://wa.me/${cleanWhatsapp}?text=${encodeURIComponent(
-        `Hello ${settings.business_name || 'Ak Coutcher'},\n\nI have saved these outfits in my personal Lookbook and would like to inquire about bespoke fittings, custom colorways, and availability:\n\n• ${itemNames}\n\nPlease share details and consultation slots.`
+        `Hello ${settings.business_name || 'AK COUTURE'},\n\nI have saved these outfits in my personal Lookbook and would like to inquire about bespoke fittings, custom colorways, and availability:\n\n• ${itemNames}\n\nPlease share details and consultation slots.`
       )}`
     : '#';
 
@@ -82,9 +82,10 @@ export const LookbookDrawer: React.FC<LookbookDrawerProps> = ({ settings, onNavi
                   >
                     <div className="w-20 h-24 rounded-lg overflow-hidden bg-stone-100 shrink-0">
                       <img
-                        src={item.cover_image || '/src/assets/images/punjabi_bridal_suit_1790501214454.jpg'}
+                        src={item.cover_image || '/src/assets/images/bridal_ak_girl_1790594555283.jpg'}
                         alt={item.name}
                         className="w-full h-full object-cover"
+                        referrerPolicy="no-referrer"
                       />
                     </div>
                     <div className="flex-1 min-w-0 flex flex-col justify-between">

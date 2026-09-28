@@ -22,11 +22,20 @@ import { CustomOrderPage } from './pages/public/CustomOrderPage';
 import { PrivacyPolicyPage } from './pages/public/PrivacyPolicyPage';
 import { TermsPage } from './pages/public/TermsPage';
 import { ThankYouPage } from './pages/public/ThankYouPage';
+import { CoursesPage } from './pages/public/CoursesPage';
+import { CourseDetailPage } from './pages/public/CourseDetailPage';
+import { CourseCheckoutPage } from './pages/public/CourseCheckoutPage';
+import { VerifyCertificatePage } from './pages/public/VerifyCertificatePage';
+import { CertificateViewPage } from './pages/public/CertificateViewPage';
+import { StudentAuthPage } from './pages/student/StudentAuthPage';
+import { StudentDashboardPage } from './pages/student/StudentDashboardPage';
+import { CoursePlayerPage } from './pages/student/CoursePlayerPage';
 
 // Admin System
 import { AdminLayout } from './components/admin/AdminLayout';
 import { AdminLoginPage } from './pages/admin/AdminLoginPage';
 import { AdminDashboardPage } from './pages/admin/AdminDashboardPage';
+import { AdminCoursesManagerPage } from './pages/admin/AdminCoursesManagerPage';
 import { AdminHomepageContentPage } from './pages/admin/AdminHomepageContentPage';
 import { AdminAboutContentPage } from './pages/admin/AdminAboutContentPage';
 import { AdminServicesPage } from './pages/admin/AdminServicesPage';
@@ -157,6 +166,7 @@ function AppContent() {
     else if (currentPath === '/admin/appointments') activeSec = 'appointments';
     else if (currentPath === '/admin/orders') activeSec = 'orders';
     else if (currentPath === '/admin/messages') activeSec = 'messages';
+    else if (currentPath === '/admin/courses') activeSec = 'courses';
     else if (currentPath === '/admin/media') activeSec = 'media';
     else if (currentPath === '/admin/settings') activeSec = 'settings';
     else if (currentPath === '/admin/profile') activeSec = 'profile';
@@ -185,6 +195,7 @@ function AppContent() {
         {activeSec === 'appointments' && <AdminAppointmentsPage />}
         {activeSec === 'orders' && <AdminOrdersPage />}
         {activeSec === 'messages' && <AdminMessagesPage />}
+        {activeSec === 'courses' && <AdminCoursesManagerPage />}
         {activeSec === 'media' && <AdminMediaPage />}
         {activeSec === 'settings' && <AdminSettingsPage />}
         {activeSec === 'profile' && (
@@ -248,6 +259,50 @@ function AppContent() {
     }
     if (currentPath === '/thank-you') {
       return <ThankYouPage settings={settings} onNavigate={navigate} />;
+    }
+
+    // ----------------------------------------------------
+    // TRAINING & COURSES SYSTEM ROUTES
+    // ----------------------------------------------------
+    if (currentPath === '/courses') {
+      return <CoursesPage onNavigate={navigate} />;
+    }
+    if (currentPath.startsWith('/courses/')) {
+      const slug = currentPath.replace('/courses/', '').split('/')[0].split('?')[0];
+      return <CourseDetailPage slug={slug} onNavigate={navigate} />;
+    }
+    if (currentPath.startsWith('/checkout/')) {
+      const slug = currentPath.replace('/checkout/', '').split('/')[0].split('?')[0];
+      return <CourseCheckoutPage slug={slug} onNavigate={navigate} />;
+    }
+    if (currentPath.startsWith('/student/player/')) {
+      const slug = currentPath.replace('/student/player/', '').split('/')[0].split('?')[0];
+      return <CoursePlayerPage slug={slug} onNavigate={navigate} />;
+    }
+    if (currentPath.startsWith('/student/dashboard')) {
+      return <StudentDashboardPage onNavigate={navigate} />;
+    }
+    if (currentPath.startsWith('/student/auth')) {
+      const searchParams = new URLSearchParams(window.location.search);
+      const tab = searchParams.get('tab') === 'login' ? 'login' : 'register';
+      const courseSlug = searchParams.get('course') || undefined;
+      const action = searchParams.get('action') || undefined;
+      return (
+        <StudentAuthPage
+          onNavigate={navigate}
+          defaultTab={tab}
+          redirectCourseSlug={courseSlug}
+          action={action}
+        />
+      );
+    }
+    if (currentPath === '/verify' || currentPath.startsWith('/verify/')) {
+      const certId = currentPath.startsWith('/verify/') ? currentPath.replace('/verify/', '').trim() : undefined;
+      return <VerifyCertificatePage initialId={certId} onNavigate={navigate} />;
+    }
+    if (currentPath.startsWith('/certificate/')) {
+      const certId = currentPath.replace('/certificate/', '').trim();
+      return <CertificateViewPage certificateId={certId} onNavigate={navigate} />;
     }
 
     // 404 fallback

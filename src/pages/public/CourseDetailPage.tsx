@@ -445,7 +445,7 @@ export const CourseDetailPage: React.FC<CourseDetailPageProps> = ({ slug, onNavi
                   Official Certificate of Course Completion
                 </h4>
                 <p className="text-xs text-stone-600 leading-relaxed font-light">
-                  Upon finishing all module lessons and passing the final assessment quiz (70%+ passing score), you will be awarded an authorized <strong>Certificate of Course Completion</strong> from <strong>AK COUTCHER</strong>.
+                  Upon finishing all module lessons and passing the final assessment quiz (70%+ passing score), you will be awarded an authorized <strong>Certificate of Course Completion</strong> from <strong>AK COUTURE</strong>.
                 </p>
                 <div className="pt-1 flex items-center gap-2 text-xs text-stone-500 font-medium">
                   <ShieldCheck className="w-4 h-4 text-emerald-600" />
@@ -464,7 +464,7 @@ export const CourseDetailPage: React.FC<CourseDetailPageProps> = ({ slug, onNavi
               Have questions regarding offline vs online modules, kit materials, or payment? Connect directly with our academy admissions desk.
             </p>
             <a
-              href="https://wa.me/919501657426?text=Hello%20AK%20COUTCHER%20Academy,%20I%20would%20like%20guidance%20regarding%20the%20courses."
+              href="https://wa.me/919501657426?text=Hello%20AK%20COUTURE%20Academy,%20I%20would%20like%20guidance%20regarding%20the%20courses."
               target="_blank"
               rel="noopener noreferrer"
               className="w-full py-2.5 px-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs uppercase tracking-wider font-semibold transition flex items-center justify-center gap-2 shadow-xs"

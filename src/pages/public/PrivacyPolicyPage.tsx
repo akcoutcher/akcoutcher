@@ -20,7 +20,7 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ settings, 
           <section className="space-y-2">
             <h2 className="font-serif text-xl font-medium text-stone-900">1. Information We Collect</h2>
             <p>
-              At {settings.business_name || 'Kaur Couture'}, we respect your privacy. When you request an appointment, submit a custom order, or message our atelier, we collect contact information including your full name, phone number, WhatsApp number, email address, dress specifications, measurements, and any reference design images you provide.
+              At {settings.business_name || 'AK COUTURE'}, we respect your privacy. When you request an appointment, submit a custom order, or message our atelier, we collect contact information including your full name, phone number, WhatsApp number, email address, dress specifications, measurements, and any reference design images you provide.
             </p>
           </section>
 

@@ -15,7 +15,9 @@ export const AboutPage: React.FC<AboutPageProps> = ({ settings, onNavigate }) =>
     getAboutContent().then(setAbout);
   }, []);
 
-  const ownerImage = settings.owner_image_url || '/src/assets/images/punjabi_designer_portrait_1790501188325.jpg';
+  const ownerImage = settings.owner_image_url && !settings.owner_image_url.includes('punjabi_designer_portrait')
+    ? settings.owner_image_url
+    : '/aakk11.png';
 
   return (
     <div className="w-full bg-[#FAF7F2] text-[#1C1917] py-16 sm:py-24">
@@ -36,11 +38,11 @@ export const AboutPage: React.FC<AboutPageProps> = ({ settings, onNavigate }) =>
         {/* Story Section with Designer Portrait */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           <div className="lg:col-span-5">
-            <div className="aspect-[3/4] rounded-xl overflow-hidden shadow-2xl border border-stone-300 relative bg-stone-100">
+            <div className="group aspect-[3/4] rounded-xl overflow-hidden shadow-2xl border border-stone-300 relative bg-stone-100">
               <img
                 src={ownerImage}
                 alt={settings.owner_name || 'Simran Kaur'}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 referrerPolicy="no-referrer"
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent p-6 text-white">
@@ -54,12 +56,13 @@ export const AboutPage: React.FC<AboutPageProps> = ({ settings, onNavigate }) =>
 
           <div className="lg:col-span-7 space-y-6">
             <h2 className="font-serif text-3xl sm:text-4xl text-[#58111A] font-normal">
-              The Journey of Kaur Couture
+              The Journey of Ak Couture
             </h2>
             <div className="space-y-4 text-stone-700 text-sm sm:text-base leading-relaxed font-light">
               <p>
-                {about?.story ||
-                  'Founded in the heart of Punjab, Kaur Couture emerged from a passionate devotion to authentic textile arts and flawless silhouette architecture. We believe every woman deserves clothing that honors tradition while celebrating her personal poise.'}
+                {about?.story
+                  ? about.story.replace(/Kaur Couture/gi, 'Ak Couture')
+                  : 'Founded in the heart of Punjab, Ak Couture emerged from a passionate devotion to authentic textile arts and flawless silhouette architecture. We believe every woman deserves clothing that honors tradition while celebrating her personal poise.'}
               </p>
               <p>
                 {settings.owner_full_bio ||

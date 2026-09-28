@@ -50,8 +50,10 @@ export const HomePage: React.FC<HomePageProps> = ({ settings, homepage, onNaviga
     ? `https://wa.me/${cleanWhatsapp}?text=${encodeURIComponent('Hello AK Couture, I am interested in inquiring about your bespoke bridal suits and couture collection.')}`
     : '#';
 
-  const heroImage = homepage.hero_image_url || '/src/assets/images/punjabi_couture_hero_1790501175200.jpg';
-  const ownerImage = settings.owner_image_url || '/src/assets/images/punjabi_designer_portrait_1790501188325.jpg';
+  const heroImage = homepage.hero_image_url && !homepage.hero_image_url.includes('punjabi_couture_hero')
+    ? homepage.hero_image_url
+    : '/src/assets/images/hero_ak_couture_1790594513046.jpg';
+  const ownerImage = settings.owner_image_url || '/aakk11.png';
   const craftImage = homepage.craftsmanship_image_url || '/src/assets/images/punjabi_embroidery_craft_1790501202133.jpg';
 
   const testimonials = [
@@ -516,12 +518,18 @@ export const HomePage: React.FC<HomePageProps> = ({ settings, homepage, onNaviga
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-5">
-              <div className="aspect-[3/4] rounded-2xl overflow-hidden border border-stone-300 shadow-xl bg-stone-100">
+              <div className="group aspect-[3/4] rounded-2xl overflow-hidden border border-stone-300 shadow-xl bg-stone-100 relative">
                 <img
-                  src={ownerImage}
+                  src="/aakk11.png"
                   alt={settings.owner_name || 'AK Couture Master Couturier'}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    const target = e.currentTarget;
+                    if (target.src !== ownerImage) {
+                      target.src = ownerImage;
+                    }
+                  }}
                 />
               </div>
             </div>
@@ -531,7 +539,7 @@ export const HomePage: React.FC<HomePageProps> = ({ settings, homepage, onNaviga
                 Creative Director &amp; Master Couturier
               </span>
               <h2 className="font-serif text-3xl sm:text-5xl text-[#58111A] font-normal">
-                {settings.owner_name || 'AK Couturier'}
+                {settings.owner_name || 'Anmol Kaur'}
               </h2>
               <p className="text-xs font-medium uppercase tracking-widest text-stone-500">
                 {settings.owner_title || 'Master Couturier & Founder'}
@@ -575,7 +583,7 @@ export const HomePage: React.FC<HomePageProps> = ({ settings, homepage, onNaviga
                 <img src="/pwa-192x192.png" alt="App" className="w-10 h-10 object-contain" />
               </div>
               <div>
-                <h3 className="font-serif text-2xl text-white font-medium">Install Ak Coutcher on Your Device</h3>
+                <h3 className="font-serif text-2xl text-white font-medium">Install AK COUTURE on Your Device</h3>
                 <p className="text-xs text-stone-300 mt-1 max-w-lg">
                   Install in seconds without going to app stores. Enjoy instant offline browsing of our bridal lookbooks and quick appointment booking.
                 </p>

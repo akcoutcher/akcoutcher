@@ -1,9 +1,9 @@
 import { Course, CourseCategory, CourseModule, CourseQuiz, AcademySettings } from '../types/courses';
 
 export const DEFAULT_ACADEMY_SETTINGS: AcademySettings = {
-  instituteName: 'AK COUTCHER Academy of Fashion & Design',
+  instituteName: 'AK COUTURE Fashion Academy',
   tagline: 'Fashion Designing & Skill Development',
-  logo: '/src/assets/images/punjabi_designer_portrait_1790501188325.jpg',
+  logo: '/aakk11.png',
   email: 'akcoutcher@gmail.com',
   phone: '+91 95016 57426',
   address: 'Adampur Doaba, Distt. Jalandhar, Pin Code 144102, Punjab',
@@ -41,11 +41,11 @@ export const INITIAL_COURSES: Course[] = [
     price: 0,
     duration: '2 Weeks (8 Hours)',
     totalLessons: 7,
-    image: '/src/assets/images/punjabi_couture_hero_1790501175200.jpg',
+    image: '/src/assets/images/hero_ak_couture_1790594513046.jpg',
     instructor: {
       name: 'Anmol Kaur',
       role: 'Head Couturier & Master Designer',
-      avatar: '/src/assets/images/punjabi_designer_portrait_1790501188325.jpg',
+      avatar: '/aakk11.png',
       bio: 'Renowned couturier with decades of mastery in authentic Punjabi silhouettes, bridal couture, and master artisan embroidery.',
     },
     mode: 'Online Video & Practical',
@@ -90,7 +90,7 @@ export const INITIAL_COURSES: Course[] = [
     instructor: {
       name: 'Anmol Kaur',
       role: 'Head Couturier & Master Designer',
-      avatar: '/src/assets/images/punjabi_designer_portrait_1790501188325.jpg',
+      avatar: '/aakk11.png',
       bio: 'Master of hand-drawn croquis and couture apparel sketches.',
     },
     mode: 'Online Video & Practical',
@@ -129,7 +129,7 @@ export const INITIAL_COURSES: Course[] = [
     instructor: {
       name: 'Anmol Kaur',
       role: 'Head Couturier & Master Designer',
-      avatar: '/src/assets/images/punjabi_designer_portrait_1790501188325.jpg',
+      avatar: '/aakk11.png',
       bio: 'Expert colorist and textile curator.',
     },
     mode: 'Self-Paced Masterclass',
@@ -163,11 +163,11 @@ export const INITIAL_COURSES: Course[] = [
     price: 0,
     duration: '2 Weeks (6 Hours)',
     totalLessons: 6,
-    image: '/src/assets/images/punjabi_couture_hero_1790501175200.jpg',
+    image: '/src/assets/images/hero_ak_couture_1790594513046.jpg',
     instructor: {
       name: 'Anmol Kaur',
       role: 'Head Couturier & Master Designer',
-      avatar: '/src/assets/images/punjabi_designer_portrait_1790501188325.jpg',
+      avatar: '/aakk11.png',
       bio: 'Atelier master with over two decades of textile trade expertise.',
     },
     mode: 'Online Video & Practical',
@@ -199,11 +199,11 @@ export const INITIAL_COURSES: Course[] = [
     price: 0,
     duration: '1 Week (4 Hours)',
     totalLessons: 4,
-    image: '/src/assets/images/punjabi_designer_portrait_1790501188325.jpg',
+    image: '/aakk11.png',
     instructor: {
       name: 'Anmol Kaur',
       role: 'Head Couturier & Master Designer',
-      avatar: '/src/assets/images/punjabi_designer_portrait_1790501188325.jpg',
+      avatar: '/aakk11.png',
       bio: 'Master pattern maker and fitting specialist.',
     },
     mode: 'Online Video & Practical',
@@ -239,7 +239,7 @@ export const INITIAL_COURSES: Course[] = [
     instructor: {
       name: 'Anmol Kaur',
       role: 'Head Couturier & Master Designer',
-      avatar: '/src/assets/images/punjabi_designer_portrait_1790501188325.jpg',
+      avatar: '/aakk11.png',
       bio: 'Pattern cutting innovator and mentor.',
     },
     mode: 'Online Video & Practical',
@@ -274,12 +274,12 @@ export const INITIAL_COURSES: Course[] = [
     discountPrice: 8999,
     duration: '16 Weeks (120 Hours)',
     totalLessons: 34,
-    image: '/src/assets/images/punjabi_couture_hero_1790501175200.jpg',
+    image: '/src/assets/images/hero_ak_couture_1790594513046.jpg',
     instructor: {
       name: 'Anmol Kaur',
       role: 'Head Couturier & Master Designer',
-      avatar: '/src/assets/images/punjabi_designer_portrait_1790501188325.jpg',
-      bio: 'Founder of AK Coutcher, mentoring the next generation of luxury fashion designers.',
+      avatar: '/aakk11.png',
+      bio: 'Founder of AK COUTURE, mentoring the next generation of luxury fashion designers.',
     },
     mode: 'Hybrid Studio Training',
     requirements: [
@@ -329,7 +329,7 @@ export const INITIAL_COURSES: Course[] = [
     instructor: {
       name: 'Anmol Kaur',
       role: 'Head Couturier & Master Designer',
-      avatar: '/src/assets/images/punjabi_designer_portrait_1790501188325.jpg',
+      avatar: '/aakk11.png',
       bio: 'Specialist in progressive couture education and pattern mathematics.',
     },
     mode: 'Online Video & Practical',
@@ -367,7 +367,7 @@ export const INITIAL_COURSES: Course[] = [
     instructor: {
       name: 'Anmol Kaur',
       role: 'Head Couturier & Master Designer',
-      avatar: '/src/assets/images/punjabi_designer_portrait_1790501188325.jpg',
+      avatar: '/aakk11.png',
       bio: 'Fashion artist with international showcase features.',
     },
     mode: 'Self-Paced Masterclass',
@@ -400,11 +400,11 @@ export const INITIAL_COURSES: Course[] = [
     discountPrice: 7499,
     duration: '10 Weeks (75 Hours)',
     totalLessons: 24,
-    image: '/src/assets/images/punjabi_designer_portrait_1790501188325.jpg',
+    image: '/aakk11.png',
     instructor: {
       name: 'Anmol Kaur',
       role: 'Head Couturier & Master Designer',
-      avatar: '/src/assets/images/punjabi_designer_portrait_1790501188325.jpg',
+      avatar: '/aakk11.png',
       bio: 'Atelier master specializing in heirloom Punjabi tailoring architecture.',
     },
     mode: 'Online Video & Practical',
@@ -438,12 +438,12 @@ export const INITIAL_COURSES: Course[] = [
     discountPrice: 5999,
     duration: '6 Weeks (36 Hours)',
     totalLessons: 18,
-    image: '/src/assets/images/punjabi_couture_hero_1790501175200.jpg',
+    image: '/src/assets/images/hero_ak_couture_1790594513046.jpg',
     instructor: {
       name: 'Anmol Kaur',
       role: 'Founder & Managing Director',
-      avatar: '/src/assets/images/punjabi_designer_portrait_1790501188325.jpg',
-      bio: 'Founder who scaled AK Coutcher from a local atelier to an international luxury bridal destination.',
+      avatar: '/aakk11.png',
+      bio: 'Founder who scaled AK COUTURE from a local atelier to an international luxury bridal destination.',
     },
     mode: 'Interactive Workshop',
     requirements: ['Basic computer / smartphone for spreadsheets and social media', 'Desire to launch or grow a boutique business'],
@@ -480,7 +480,7 @@ export const INITIAL_COURSES: Course[] = [
     instructor: {
       name: 'Anmol Kaur',
       role: 'Head Couturier & Master Designer',
-      avatar: '/src/assets/images/punjabi_designer_portrait_1790501188325.jpg',
+      avatar: '/aakk11.png',
       bio: 'Master of heritage zardozi, gota, tilla, and royal trousseau architecture.',
     },
     mode: 'Hybrid Studio Training',
@@ -530,7 +530,7 @@ Fashion design is the art of applying design, aesthetics, clothing construction,
 3. **Texture**: The surface quality of fabric (matte, luster, coarse, silky).
 4. **Color Harmony**: The visual melody created by complementary or contrasting hues.
 
-In this lesson, Anmol Kaur explains how AK Coutcher transforms authentic Punjabi sensibilities into contemporary couture.`,
+In this lesson, Anmol Kaur explains how AK COUTURE transforms authentic Punjabi sensibilities into contemporary couture.`,
       },
       {
         id: 'les-f1-2',
@@ -548,7 +548,7 @@ The fashion industry operates on three distinct tiers:
 2. **Pret-a-Porter (Ready-to-Wear)**: Standardized sizes produced in small to medium batches with premium finishes.
 3. **Mass Market / Fast Fashion**: Large scale automated manufacturing tailored for mass commercial retail.
 
-At **AK COUTCHER**, we specialize in bespoke couture, where every single stitch, kali flare, and embroidery motif is personalized for the client.`,
+At **AK COUTURE**, we specialize in bespoke couture, where every single stitch, kali flare, and embroidery motif is personalized for the client.`,
       },
       {
         id: 'les-f1-3',

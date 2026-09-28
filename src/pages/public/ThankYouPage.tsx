@@ -16,7 +16,7 @@ export const ThankYouPage: React.FC<ThankYouPageProps> = ({ settings, onNavigate
           Thank You for Contacting Us
         </h1>
         <p className="text-stone-600 text-sm sm:text-base leading-relaxed font-light">
-          Your request has been securely recorded by our atelier system. A member of the {settings.business_name || 'Kaur Couture'} team will contact you shortly to coordinate fittings, measurements, or answer any questions.
+          Your request has been securely recorded by our atelier system. A member of the {settings.business_name || 'AK COUTURE'} team will contact you shortly to coordinate fittings, measurements, or answer any questions.
         </p>
 
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
