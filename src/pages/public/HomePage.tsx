@@ -91,12 +91,8 @@ export const HomePage: React.FC<HomePageProps> = ({ settings, homepage, onNaviga
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/30" />
         </div>
 
+        {/* Hero Content */}
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center text-[#FAF7F2] space-y-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/40 border border-[#C5A059]/50 backdrop-blur-sm text-[11px] uppercase tracking-[0.3em] text-[#C5A059] font-medium">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Handcrafted Haute Couture &amp; Bespoke Atelier</span>
-          </div>
-
           <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-light tracking-tight leading-[1.08] text-balance">
             {homepage.hero_heading || 'Where Heritage Meets Contemporary Haute Couture'}
           </h1>

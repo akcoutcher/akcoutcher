@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, Calendar, MessageCircle, Heart, Ruler, Globe } from 'lucide-react';
+import { Menu, X, Calendar, MessageCircle, Heart, Ruler, Globe, ShoppingBag } from 'lucide-react';
 import { SiteSettings } from '../../types/database';
 import { useCouture, CURRENCIES, CurrencyCode } from '../../context/CoutureContext';
 
@@ -13,7 +13,18 @@ export const Header: React.FC<HeaderProps> = ({ settings, currentPath, onNavigat
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currencyDropdownOpen, setCurrencyDropdownOpen] = useState(false);
 
-  const { currency, setCurrency, wishlist, setLookbookOpen, setMeasurementModalOpen } = useCouture();
+  const {
+    currency,
+    setCurrency,
+    wishlist,
+    productWishlist,
+    setLookbookOpen,
+    setMeasurementModalOpen,
+    cartCount,
+    setIsCartOpen,
+  } = useCouture();
+
+  const totalWishlistCount = wishlist.length + productWishlist.length;
 
   const navLinks = [
     { label: 'Home', path: '/' },
@@ -114,10 +125,10 @@ export const Header: React.FC<HeaderProps> = ({ settings, currentPath, onNavigat
               <img src={settings.logo_url} alt={settings.business_name} className="h-10 w-auto object-contain" />
             ) : (
               <div className="flex flex-col">
-                <span className="font-serif text-2xl sm:text-3xl font-medium tracking-tight text-[#58111A] group-hover:text-[#6B1D2F] transition-colors">
+                <span className="font-serif text-lg sm:text-xl font-medium tracking-wide text-[#58111A] group-hover:text-[#6B1D2F] transition-colors">
                   {settings.business_name === 'Kaur Couture' || settings.business_name === 'Ak Coutcher' || !settings.business_name ? 'AK COUTURE' : settings.business_name}
                 </span>
-                <span className="text-[10px] tracking-[0.25em] uppercase text-[#C5A059] font-semibold font-sans -mt-1">
+                <span className="text-[9px] tracking-[0.22em] uppercase text-[#C5A059] font-semibold font-sans -mt-0.5">
                   Haute Couture Atelier
                 </span>
               </div>
@@ -146,18 +157,32 @@ export const Header: React.FC<HeaderProps> = ({ settings, currentPath, onNavigat
           })}
         </nav>
 
-        {/* Right Touchpoints: Lookbook, WhatsApp, Book Appointment */}
+        {/* Right Touchpoints: Lookbook, Cart, WhatsApp, Book Appointment */}
         <div className="hidden sm:flex items-center gap-3">
-          {/* Lookbook Drawer trigger */}
+          {/* Wishlist / Lookbook Drawer trigger */}
           <button
             onClick={() => setLookbookOpen(true)}
             className="relative p-2 text-stone-700 hover:text-[#58111A] hover:bg-stone-200/50 rounded-full transition cursor-pointer"
-            title="My Saved Lookbook"
+            title="My Saved Lookbook & Wishlist"
           >
             <Heart className="w-5 h-5" />
-            {wishlist.length > 0 && (
+            {totalWishlistCount > 0 && (
               <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#58111A] text-white text-[10px] font-bold flex items-center justify-center">
-                {wishlist.length}
+                {totalWishlistCount}
+              </span>
+            )}
+          </button>
+
+          {/* Shopping Cart Drawer trigger */}
+          <button
+            onClick={() => setIsCartOpen(true)}
+            className="relative p-2 text-stone-700 hover:text-[#58111A] hover:bg-stone-200/50 rounded-full transition cursor-pointer"
+            title="Shopping Bag"
+          >
+            <ShoppingBag className="w-5 h-5" />
+            {cartCount > 0 && (
+              <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#C9A227] text-[#0B0B0B] text-[10px] font-bold flex items-center justify-center shadow-xs">
+                {cartCount}
               </span>
             )}
           </button>
@@ -184,7 +209,21 @@ export const Header: React.FC<HeaderProps> = ({ settings, currentPath, onNavigat
         </div>
 
         {/* Mobile Hamburger & Actions */}
-        <div className="flex items-center gap-2 lg:hidden">
+        <div className="flex items-center gap-1 sm:hidden lg:hidden">
+          {/* Mobile Cart trigger */}
+          <button
+            onClick={() => setIsCartOpen(true)}
+            className="relative p-2 text-stone-700 hover:text-[#58111A] rounded-full cursor-pointer"
+            title="Shopping Bag"
+          >
+            <ShoppingBag className="w-5 h-5" />
+            {cartCount > 0 && (
+              <span className="absolute top-0.5 right-0.5 w-4 h-4 rounded-full bg-[#C9A227] text-[#0B0B0B] text-[9px] font-bold flex items-center justify-center">
+                {cartCount}
+              </span>
+            )}
+          </button>
+
           {/* Lookbook badge mobile */}
           <button
             onClick={() => setLookbookOpen(true)}
@@ -192,9 +231,9 @@ export const Header: React.FC<HeaderProps> = ({ settings, currentPath, onNavigat
             title="Lookbook"
           >
             <Heart className="w-5 h-5" />
-            {wishlist.length > 0 && (
-              <span className="absolute 0 top-0.5 right-0.5 w-4 h-4 rounded-full bg-[#58111A] text-white text-[9px] font-bold flex items-center justify-center">
-                {wishlist.length}
+            {totalWishlistCount > 0 && (
+              <span className="absolute top-0.5 right-0.5 w-4 h-4 rounded-full bg-[#58111A] text-white text-[9px] font-bold flex items-center justify-center">
+                {totalWishlistCount}
               </span>
             )}
           </button>

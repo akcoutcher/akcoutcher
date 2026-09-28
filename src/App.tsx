@@ -12,6 +12,8 @@ import { HomePage } from './pages/public/HomePage';
 import { AboutPage } from './pages/public/AboutPage';
 import { CollectionsPage } from './pages/public/CollectionsPage';
 import { CollectionDetailPage } from './pages/public/CollectionDetailPage';
+import { ProductDetailPage } from './pages/public/ProductDetailPage';
+import { CheckoutPage } from './pages/public/CheckoutPage';
 import { DesignsPage } from './pages/public/DesignsPage';
 import { DesignDetailPage } from './pages/public/DesignDetailPage';
 import { ServicesPage } from './pages/public/ServicesPage';
@@ -35,6 +37,7 @@ import { CoursePlayerPage } from './pages/student/CoursePlayerPage';
 import { AdminLayout } from './components/admin/AdminLayout';
 import { AdminLoginPage } from './pages/admin/AdminLoginPage';
 import { AdminDashboardPage } from './pages/admin/AdminDashboardPage';
+import { AdminProductsPage } from './pages/admin/AdminProductsPage';
 import { AdminCoursesManagerPage } from './pages/admin/AdminCoursesManagerPage';
 import { AdminHomepageContentPage } from './pages/admin/AdminHomepageContentPage';
 import { AdminAboutContentPage } from './pages/admin/AdminAboutContentPage';
@@ -52,8 +55,10 @@ import { AdminProfilePage } from './pages/admin/AdminProfilePage';
 import { CoutureProvider } from './context/CoutureContext';
 import { OfflineIndicator } from './components/common/OfflineIndicator';
 import { LookbookDrawer } from './components/common/LookbookDrawer';
+import { CartDrawer } from './components/collections/CartDrawer';
 import { MeasurementGuideModal } from './components/common/MeasurementGuideModal';
 import { FloatingWhatsAppButton } from './components/common/FloatingWhatsAppButton';
+import { getProductBySlug } from './lib/productDb';
 
 function AppContent() {
   const [currentPath, setCurrentPath] = useState<string>(() => {

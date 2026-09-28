@@ -61,8 +61,9 @@ export const AdminLayout: React.FC<AdminLayoutProps> = ({
       ],
     },
     {
-      title: 'Couture Catalog',
+      title: 'Couture Catalog & Store',
       items: [
+        { id: 'products', label: 'Products & Store', icon: <ShoppingBag className="w-4 h-4 text-[#C9A227]" /> },
         { id: 'collections', label: 'Collections', icon: <FolderKanban className="w-4 h-4" /> },
         { id: 'designs', label: 'Designs & Ensembles', icon: <Scissors className="w-4 h-4" /> },
         { id: 'gallery', label: 'Artisan Gallery', icon: <ImageIcon className="w-4 h-4" /> },
